@@ -8,6 +8,8 @@ import { Ionicons } from "@expo/vector-icons";
 import Home from "./screens/Home";
 import Scan from "./screens/Scan";
 import Profile from "./screens/Profile";
+import Session from "./screens/Session"; // Importez votre composant Session
+import Checker from "./screens/Checker"; // Importez votre composant Session
 
 const Tab = createBottomTabNavigator();
 
@@ -44,6 +46,9 @@ export default function App() {
               ),
             }}
           ></Tab.Screen>
+          {/* Ajoutez la route pour Session */}
+          <Tab.Screen name="Session" component={Session}></Tab.Screen>
+          <Tab.Screen name="Checker" component={Checker}></Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     </View>

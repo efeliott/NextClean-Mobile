@@ -1,14 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  Modal,
-  Button,
-} from "react-native";
+import { View, Text, StyleSheet, Modal, Button, Linking } from "react-native";
 import { Camera } from "expo-camera";
-import { Linking } from "react-native";
+import { useNavigation } from "@react-navigation/native"; // Import de useNavigation
+import axios from "axios";
 
 const QRCodeScannerScreen = () => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -16,6 +10,7 @@ const QRCodeScannerScreen = () => {
   const [qrData, setQrData] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const cameraRef = useRef(null);
+  const navigation = useNavigation(); // Utilisation de useNavigation
 
   useEffect(() => {
     (async () => {
@@ -35,6 +30,9 @@ const QRCodeScannerScreen = () => {
       setTimeout(() => {
         setScanned(false);
       }, 6000); // Adjust the delay as needed
+
+      // Redirection vers la page "Session" après le scan
+      navigation.navigate("Session", { qrData: data }); // Passer les données QR
     }
   };
 
