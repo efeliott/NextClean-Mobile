@@ -27,7 +27,7 @@ export default function App() {
             }}
           ></Tab.Screen>
           <Tab.Screen
-            name="About"
+            name="Scan"
             component={Scan}
             options={{
               tabBarIcon: ({ color, size }) => (
